@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 function Ragistration() {
@@ -9,7 +10,7 @@ const [name,setNmae]=useState([])
 const [ message,setMessage]=useState()
 
 const auth = getAuth();
-
+let navigate=useNavigate()
 let handlemil=(e)=>{
   setEmail(e.target.value);
   
@@ -45,7 +46,7 @@ createUserWithEmailAndPassword(auth, email, password)
 
   return (
     <div className='border-5'>
-      message && <p className="mt-3">{message}</p>
+      {message && <p className="mt-3">{message}</p>}
       <label>Emaile
         <input onChange={handlemil} className="bg-slate-300" type="text" />
         

@@ -8,6 +8,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { StrictMode } from 'react';
 
 
 const router = createBrowserRouter(

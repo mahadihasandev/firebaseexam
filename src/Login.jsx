@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { GoogleAuthProvider } from "firebase/auth";
-import { getAuth, signInWithPopup } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -8,6 +8,7 @@ function Login() {
  const provider = new GoogleAuthProvider();
 const [password,setPassword]=useState([])
 const [email,setEmail]=useState([])
+let navigate=useNavigate()
 
 let handleEmail=(e)=>{
 setEmail(e.target.value)
@@ -19,7 +20,9 @@ setPassword(e.target.value)
  let handlelogin=()=>{
     signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    
+    setTimeout(() => {
+              navigate("/home");
+            }, 1000);
 
  
   })
@@ -36,7 +39,9 @@ setPassword(e.target.value)
 const auth = getAuth();
 signInWithPopup(auth, provider)
   .then((user) => {
-  
+  setTimeout(() => {
+              navigate("/Home");
+            }, 1000);
   }).catch((error) => {
     
     const errorCode = error.code;
