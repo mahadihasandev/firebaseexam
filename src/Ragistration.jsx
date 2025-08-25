@@ -45,7 +45,7 @@ createUserWithEmailAndPassword(auth, email, password)
 }
 
   return (
-    <div className='border-5'>
+    <div className='border-5container mt-20'>
       {message && <p className="mt-3">{message}</p>}
       <label>Emaile
         <input onChange={handlemil} className="bg-slate-300" type="text" />

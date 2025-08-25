@@ -50,7 +50,8 @@ signInWithPopup(auth, provider)
 
   }
   return (
-    <div>
+    
+    <div className='container mt-20'>
       <button className='border-4 m-10 bg-yellow-300' onClick={handleGoogleAuth} >loginwithe google</button>
        <div className='border-5'>
       <label>login
