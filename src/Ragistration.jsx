@@ -33,9 +33,9 @@ createUserWithEmailAndPassword(auth, email, password)
     setEmail('')
     setPassword('')
     setNmae('')
-    setTimeout(() => {
+  
               navigate("/login");
-            }, 1000);
+
  
         
         const db = getDatabase();

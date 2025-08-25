@@ -22,9 +22,9 @@ setPassword(e.target.value)
  let handlelogin=()=>{
     signInWithEmailAndPassword(auth, email, password)
   .then((user) => {
-    setTimeout(() => {
+   
               navigate("/home");
-            }, 1000);
+    
 
  
   })
@@ -39,10 +39,8 @@ setPassword(e.target.value)
 const auth = getAuth();
 signInWithPopup(auth, provider)
   .then((user) => {
-    setTimeout(() => {
+   
               navigate("/Home");
-            }, 1000);
-
         const db = getDatabase();
         set(ref(db, "userslist/" + user.user.uid), {
           username: user.user.displayName,
