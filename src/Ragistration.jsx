@@ -45,20 +45,20 @@ createUserWithEmailAndPassword(auth, email, password)
 }
 
   return (
-    <div className='border-5container mt-20'>
+    <div className='flex flex-col justify-center items-center gap-10 border-5 mt-56'>
       {message && <p className="mt-3">{message}</p>}
-      <label>Emaile
+      <label >Email:
         <input onChange={handlemil} className="bg-slate-300" type="text" />
         
       </label>
-      <label>paswowed
+      <label>paswowed:
         <input onChange={handlpassword} className="bg-slate-300" type="text" />
       </label>
       
-       <label>name
+       <label>name:
         <input onChange={handlname} className="bg-slate-300" type="text" />
        </label>
-       <button onClick={hndaleReg}>Ragistration</button>
+       <button className="border h-10 w-[120px] rounded-lg bg-amber-200" onClick={hndaleReg}>Ragistration</button>
 
     </div>
   )

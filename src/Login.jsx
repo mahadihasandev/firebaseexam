@@ -51,8 +51,8 @@ signInWithPopup(auth, provider)
   }
   return (
     
-    <div className='container mt-20'>
-      <button className='border-4 m-10 bg-yellow-300' onClick={handleGoogleAuth} >loginwithe google</button>
+    <div className='flex flex-col justify-center items-center gap-10 border-5 mt-56'>
+      <button className='border-4 p-5 rounded-lg bg-yellow-300 font-bold' onClick={handleGoogleAuth} >Login with google</button>
        <div className='border-5'>
       <label>login
         <input onChange={handleEmail} className="bg-slate-300" type="text" />
@@ -62,7 +62,7 @@ signInWithPopup(auth, provider)
         <input onChange={handlePassword} className="bg-slate-300" type="text" />
       </label>
     
-       <button onClick={handlelogin}>login</button>
+       <button  className="border h-10 w-[120px] rounded-lg bg-amber-200"  onClick={handlelogin}>login</button>
 
     </div>
     </div>
