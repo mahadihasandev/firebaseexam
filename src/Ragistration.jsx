@@ -32,10 +32,13 @@ createUserWithEmailAndPassword(auth, email, password)
     setPassword('')
     setNmae('')
      setMessage("User created successfully!");
+     setTimeout(() => {
+              navigate("/login");
+            }, 1000);
   })
   .catch((error) => {
     const errorCode = error.code;
-    const errorMessage = error.message;
+    
     // ..
   });
 }
