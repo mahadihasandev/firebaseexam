@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 
 function Ragistration() {
-const [email,setEmail]=useState([])
-const [password,setPassword]=useState([])
-const [name,setNmae]=useState([])
-const [ message,setMessage]=useState()
+const [email,setEmail]=useState('')
+const [password,setPassword]=useState('')
+const [name,setNmae]=useState('')
+
+console.log(password);
 
 const auth = getAuth();
 let navigate=useNavigate()
@@ -28,35 +29,47 @@ let handlname=(e)=>{
 
 let hndaleReg=()=>{
 createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
+  .then((user) => {
     setEmail('')
     setPassword('')
     setNmae('')
-     setMessage("User created successfully!");
-     setTimeout(() => {
+    setTimeout(() => {
               navigate("/login");
             }, 1000);
+    localStorage.setItem("activeUser", JSON.stringify(user.user));
+        
+        const db = getDatabase();
+        set(ref(db, "userslist/" + user.user.uid), {
+          username: user.user.displayName,
+          email: user.user.email,
+          photo: user.user.photoURL,
+        });
+    
+     
   })
   .catch((error) => {
     const errorCode = error.code;
+    console.log(errorCode);
+    
     
     // ..
   });
 }
 
   return (
-    <div className='flex flex-col justify-center items-center gap-10 border-5 mt-56'>
+    <div className='flex text-center rounded-2xl bg-teal-200 flex-col justify-center m-[500px] py-20 items-center gap-10 border-5 mt-56'>
       {message && <p className="mt-3">{message}</p>}
-      <label >Email:
-        <input onChange={handlemil} className="bg-slate-300" type="text" />
+      <h1 className="font-serif font-extrabold text-3xl">Ragistration</h1>
+      <label className="" ><div>Email:</div>
+        <input value={email} onChange={handlemil} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
         
       </label>
-      <label>paswowed:
-        <input onChange={handlpassword} className="bg-slate-300" type="text" />
+      <label ><div>Password:</div>
+        <input value={password} onChange={handlpassword} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
       </label>
       
-       <label>name:
-        <input onChange={handlname} className="bg-slate-300" type="text" />
+       <label  ><div>Name:</div>
+        <input value={name} onChange={handlname} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
        </label>
        <button className="border h-10 w-[120px] rounded-lg bg-amber-200" onClick={hndaleReg}>Ragistration</button>
 
