@@ -25,7 +25,7 @@ onValue(starCountRef, (snapshot) => {
       <h1 className="font-serif font-extrabold text-3xl pb-10">Home</h1>
       {
         userData.map((item)=>(
-            <div className='bg-sky-200 flex w-1/4 justify-between items-center m-auto p-8 rounded-2xl'>
+            <div className='bg-sky-200 mt-5 flex w-1/4 justify-between items-center m-auto p-8 rounded-2xl'>
        <div> 
         <h3 className='font-semibold'>{item.username}</h3>
         <h2 className='font-semibold'>{item.email}</h2>

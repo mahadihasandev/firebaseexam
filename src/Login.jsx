@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, push, ref, set } from "firebase/database";
 
+
 function Login() {
  const provider = new GoogleAuthProvider();
 const [password,setPassword]=useState([])
 const [email,setEmail]=useState([])
 let navigate=useNavigate()
-
+const auth = getAuth();
 let handleEmail=(e)=>{
 setEmail(e.target.value)
 }
@@ -34,8 +35,6 @@ setPassword(e.target.value)
  }
   
   let handleGoogleAuth=()=>{
-   
-    
 
 const auth = getAuth();
 signInWithPopup(auth, provider)

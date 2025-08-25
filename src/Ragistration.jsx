@@ -36,13 +36,13 @@ createUserWithEmailAndPassword(auth, email, password)
     setTimeout(() => {
               navigate("/login");
             }, 1000);
-    localStorage.setItem("activeUser", JSON.stringify(user.user));
+ 
         
         const db = getDatabase();
         set(ref(db, "userslist/" + user.user.uid), {
           username: user.user.displayName,
           email: user.user.email,
-          photo: user.user.photoURL,
+          
         });
     
      
@@ -52,13 +52,13 @@ createUserWithEmailAndPassword(auth, email, password)
     console.log(errorCode);
     
     
-    // ..
+   
   });
 }
 
   return (
     <div className='flex text-center rounded-2xl bg-teal-200 flex-col justify-center m-[500px] py-20 items-center gap-10 border-5 mt-56'>
-      {message && <p className="mt-3">{message}</p>}
+      
       <h1 className="font-serif font-extrabold text-3xl">Ragistration</h1>
       <label className="" ><div>Email:</div>
         <input value={email} onChange={handlemil} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
