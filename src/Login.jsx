@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, push, ref, set } from "firebase/database";
 
-
 function Login() {
  const provider = new GoogleAuthProvider();
 const [password,setPassword]=useState([])
@@ -56,12 +55,12 @@ signInWithPopup(auth, provider)
       <h1 className="font-serif font-extrabold text-3xl text-white">Login</h1>
       <button className='border-4 p-5 rounded-lg bg-yellow-300 font-bold' onClick={handleGoogleAuth} >Login with google</button>
        <div className='border-5 flex flex-col gap-5'>
-      <label className='pr-5 text-white text-xl font-extrabold font-serif'><div>Login:</div> 
-        <input value={email} onChange={handleEmail} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
+      <label className='pr-5 '><div className='text-white  text-xl font-extrabold font-serif'>Login:</div> 
+        <input value={email} onChange={handleEmail} className="bg-slate-300 rounded-xl text-base font-semibold h-10 w-60 px-5" type="text" />
         
       </label >
-      <label className='pr-5 text-white text-xl font-extrabold font-serif'><div>Password:</div>
-        <input value={password} onChange={handlePassword} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
+      <label className='pr-5 '><div className='text-white text-xl font-extrabold font-serif'>Password:</div>
+        <input value={password} onChange={handlePassword} className="bg-slate-300 text-base font-semibold rounded-xl h-10 w-60 px-5" type="text" />
       </label>
     <div>
        <button  className="border font-semibold text-lg mt-10 h-10 w-[120px] rounded-lg bg-amber-200"  onClick={handlelogin}>Login</button>

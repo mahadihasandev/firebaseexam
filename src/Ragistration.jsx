@@ -80,16 +80,16 @@ createUserWithEmailAndPassword(auth, email, password)
       
       <h1 className="font-serif font-extrabold text-3xl text-white">Ragistration</h1>
       <button className='border-4 p-5 rounded-lg bg-yellow-300 font-bold' onClick={handleGoogleAuth} >Signup with google</button>
-      <label  ><div className="text-white font-semibold text-lg font-sans">Email:</div>
-        <input value={email} onChange={handlemil} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
+      <label ><div className="text-white font-semibold text-lg font-sans">Email:</div>
+        <input value={email} onChange={handlemil} className="bg-slate-300 rounded-xl h-10 w-60 px-5 text-base" type="text" />
         
       </label>
-      <label ><div className="text-white font-semibold text-lg font-sans">Password:</div>
-        <input value={password} onChange={handlpassword} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
+      <label ><div className="text-white font-semibold text-lg font-sans ">Password:</div>
+        <input value={password} onChange={handlpassword} className="bg-slate-300 rounded-xl h-10 w-60 px-5 text-base" type="text" />
       </label>
       
-       <label  ><div className="text-white font-semibold text-lg font-sans">Name:</div>
-        <input value={name} onChange={handlname} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
+       <label  ><div className="text-white font-semibold text-lg font-sans px-5">Name:</div>
+        <input value={name} onChange={handlname} className="bg-slate-300 rounded-xl h-10 w-60 text-base" type="text" />
        </label>
        <button className="border px-7 py-4 rounded-xl bg-amber-200 font-sans font-semibold text-lg" onClick={hndaleReg}>Ragistration</button>
 
