@@ -21,11 +21,12 @@ onValue(starCountRef, (snapshot) => {
 },[])
 
   return (
-    <div className='mt-20 text-center '>
-      <h1 className="font-serif font-extrabold text-3xl pb-10">Home</h1>
+     
+    <div className='flex flex-col justify-center items-center bg-gradient-to-l from-gray-700 to-sky-900 h-[100vh]'>
+      <h1 className="font-serif font-extrabold text-3xl pb-10 text-white">Home</h1>
       {
-        userData.map((item)=>(
-            <div className='bg-sky-200 mt-5 flex w-1/4 justify-between items-center m-auto p-8 rounded-2xl'>
+        userData.map((item)=>( 
+        <div className='bg-gradient-to-r from-gray-700 to-sky-500 mt-5 flex w-1/4 justify-between items-center m-5 p-8 rounded-2xl'>
        <div> 
         <h3 className='font-semibold'>{item.username}</h3>
         <h2 className='font-semibold'>{item.email}</h2>

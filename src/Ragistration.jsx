@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { getDatabase, ref, set } from "firebase/database";
 
 
 function Ragistration() {
@@ -9,13 +10,33 @@ const [password,setPassword]=useState('')
 const [name,setNmae]=useState('')
 
 console.log(password);
-
+const provider = new GoogleAuthProvider();
 const auth = getAuth();
 let navigate=useNavigate()
 let handlemil=(e)=>{
   setEmail(e.target.value);
   
 }
+let handleGoogleAuth=()=>{
+const auth = getAuth();
+signInWithPopup(auth, provider)
+  .then((user) => {
+   
+         navigate("/Home");
+        const db = getDatabase();
+        set(ref(db, "userslist/" + user.user.uid), {
+          username: user.user.displayName,
+          email: user.user.email,
+          photo: user.user.photoURL,
+        })
+  
+  }).catch((error) => {
+    
+    const errorCode = error.code;
+    
+  });
+
+  }
 
 let handlpassword=(e)=>{
   setPassword(e.target.value);
@@ -34,10 +55,7 @@ createUserWithEmailAndPassword(auth, email, password)
     setPassword('')
     setNmae('')
   
-              navigate("/login");
-
- 
-        
+        navigate("/login");
         const db = getDatabase();
         set(ref(db, "userslist/" + user.user.uid), {
           username: user.user.displayName,
@@ -57,22 +75,25 @@ createUserWithEmailAndPassword(auth, email, password)
 }
 
   return (
-    <div className='flex text-center rounded-2xl bg-teal-200 flex-col justify-center m-[500px] py-20 items-center gap-10 border-5 mt-56'>
+    <div className='flex justify-center items-center bg-gradient-to-l from-gray-700 to-sky-900 h-[100vh] pt-0'>
+    <div className='flex p-28 text-center rounded-2xl bg-gradient-to-r from-gray-700 to-sky-500 flex-col items-center gap-10 border-5'>
       
-      <h1 className="font-serif font-extrabold text-3xl">Ragistration</h1>
-      <label className="" ><div>Email:</div>
+      <h1 className="font-serif font-extrabold text-3xl text-white">Ragistration</h1>
+      <button className='border-4 p-5 rounded-lg bg-yellow-300 font-bold' onClick={handleGoogleAuth} >Signup with google</button>
+      <label  ><div className="text-white font-semibold text-lg font-sans">Email:</div>
         <input value={email} onChange={handlemil} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
         
       </label>
-      <label ><div>Password:</div>
+      <label ><div className="text-white font-semibold text-lg font-sans">Password:</div>
         <input value={password} onChange={handlpassword} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
       </label>
       
-       <label  ><div>Name:</div>
+       <label  ><div className="text-white font-semibold text-lg font-sans">Name:</div>
         <input value={name} onChange={handlname} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
        </label>
-       <button className="border h-10 w-[120px] rounded-lg bg-amber-200" onClick={hndaleReg}>Ragistration</button>
+       <button className="border px-7 py-4 rounded-xl bg-amber-200 font-sans font-semibold text-lg" onClick={hndaleReg}>Ragistration</button>
 
+    </div>
     </div>
   )
 }

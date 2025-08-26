@@ -22,11 +22,7 @@ setPassword(e.target.value)
  let handlelogin=()=>{
     signInWithEmailAndPassword(auth, email, password)
   .then((user) => {
-   
-              navigate("/home");
-    
-
- 
+    navigate("/home");
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -35,12 +31,11 @@ setPassword(e.target.value)
  }
   
   let handleGoogleAuth=()=>{
-
 const auth = getAuth();
 signInWithPopup(auth, provider)
   .then((user) => {
    
-              navigate("/Home");
+         navigate("/Home");
         const db = getDatabase();
         set(ref(db, "userslist/" + user.user.uid), {
           username: user.user.displayName,
@@ -56,21 +51,22 @@ signInWithPopup(auth, provider)
 
   }
   return (
-    
-    <div className='flex text-center rounded-2xl bg-teal-200 flex-col justify-center m-[500px] py-20 items-center gap-10 border-5 mt-56'>
-      <h1 className="font-serif font-extrabold text-3xl">Login</h1>
+    <div className='flex justify-center items-center bg-gradient-to-l from-gray-700 to-sky-900 h-[100vh] pt-0'>
+    <div className='flex p-28 text-center rounded-2xl bg-gradient-to-r from-gray-700 to-sky-500 flex-col items-center gap-10 border-5'>
+      <h1 className="font-serif font-extrabold text-3xl text-white">Login</h1>
       <button className='border-4 p-5 rounded-lg bg-yellow-300 font-bold' onClick={handleGoogleAuth} >Login with google</button>
-       <div className='border-5'>
-      <label className='pr-5'><div>Login:</div> 
+       <div className='border-5 flex flex-col gap-5'>
+      <label className='pr-5 text-white text-xl font-extrabold font-serif'><div>Login:</div> 
         <input value={email} onChange={handleEmail} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
         
       </label >
-      <label className='pr-5'><div>Password:</div>
+      <label className='pr-5 text-white text-xl font-extrabold font-serif'><div>Password:</div>
         <input value={password} onChange={handlePassword} className="bg-slate-300 rounded-xl h-10 w-60" type="text" />
       </label>
     <div>
-       <button  className="border mt-10 h-10 w-[120px] rounded-lg bg-amber-200"  onClick={handlelogin}>login</button>
+       <button  className="border font-semibold text-lg mt-10 h-10 w-[120px] rounded-lg bg-amber-200"  onClick={handlelogin}>Login</button>
 </div>
+    </div>
     </div>
     </div>
   )
