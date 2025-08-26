@@ -51,7 +51,9 @@ signInWithPopup(auth, provider)
   }
   return (
     <div className='flex justify-center items-center bg-gradient-to-l from-gray-700 to-sky-900 h-[100vh] pt-0'>
-    <div className='flex p-28 text-center rounded-2xl bg-gradient-to-r from-gray-700 to-sky-500 flex-col items-center gap-10 border-5'>
+    <div className='flex p-28 text-center rounded-2xl 
+    bg-gradient-to-r from-gray-700 to-sky-500 flex-col 
+    items-center gap-10 border-5 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]'>
       <h1 className="font-serif font-extrabold text-3xl text-white">Login</h1>
       <button className='border-4 p-5 rounded-lg bg-yellow-300 font-bold' onClick={handleGoogleAuth} >Login with google</button>
        <div className='border-5 flex flex-col gap-5'>
